@@ -1,0 +1,11 @@
+meta {
+  name: Get Subscription
+  type: http
+  seq: 8
+}
+
+get {
+  url: {{base_url}}/subscriptions/{{ _.id }}.json
+  body: none
+  auth: none
+}

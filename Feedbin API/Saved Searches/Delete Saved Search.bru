@@ -1,0 +1,11 @@
+meta {
+  name: Delete Saved Search
+  type: http
+  seq: 7
+}
+
+delete {
+  url: {{ _.base_url }}/saved_searches/{{ _.id }}.json
+  body: none
+  auth: none
+}

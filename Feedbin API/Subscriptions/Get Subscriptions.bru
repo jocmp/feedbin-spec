@@ -1,0 +1,95 @@
+meta {
+  name: Get Subscriptions
+  type: http
+  seq: 9
+}
+
+get {
+  url: {{base_url}}/v2/subscriptions.json
+  body: none
+  auth: basic
+}
+
+query {
+  ~since: 2023-10-22T16:57:15.425Z
+}
+
+auth:basic {
+  username: {{username}}
+  password: {{password}}
+}
+
+docs {
+   - `GET /v2/subscriptions.json` will return all subscriptions.
+  
+  ```json
+  [
+    {
+      "id": 525,
+      "created_at": "2013-03-12T11:30:25.209432Z",
+      "feed_id": 47,
+      "title": "Daring Fireball",
+      "feed_url": "http://daringfireball.net/index.xml",
+      "site_url": "http://daringfireball.net/"
+    }
+  ]
+  ```
+  
+  | Parameter     | Required | Example                                                                                                                          |
+  | ------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------- |
+  | `since: date` | false    | `GET /v2/subscriptions.json?since=2013-03-08T09:44:20.449047Z` will get all subscriptions created after the iso 8601 timestamp.  |
+  | `mode: enum`  | false    | `GET /v2/subscriptions.json?mode=extended`  the only mode available is `extended`. This includes more metadata for the feed.     |
+  
+  
+  **Status Codes**
+  
+  - `200 OK` will be returned if found
+  - `403 Forbidden` will be returned if the user does not own this subscription
+  
+  Get Subscription
+  ----------------
+  
+  - `GET /v2/subscriptions/525.json` will return the feed with an id of `525`
+  
+  ```json
+  {
+    "id": 525,
+    "created_at": "2013-03-12T11:30:25.209432Z",
+    "feed_id": 47,
+    "title": "Daring Fireball",
+    "feed_url": "http://daringfireball.net/index.xml",
+    "site_url": "http://daringfireball.net/"
+  }
+  ```
+  
+  #### About `extended` Mode
+  
+  The `extended` mode includes a additional meta-data for subscriptions. Currently this includes a `json_feed` key with all of the additional metadata that a [JSON Feed offers](https://jsonfeed.org/version/1).
+  
+  ```json
+  [
+    {
+      "id" : 1,
+      "feed_id" : 1,
+      "site_url" : "https://micro.blog/",
+      "title" : "Micro.blog - manton timeline",
+      "feed_url" : "https://micro.blog/feeds/manton.json",
+      "created_at" : "2019-05-23T23:49:14.487938Z",
+      "json_feed" : {
+        "favicon" : "https://micro.blog/images/icons/favicon_32.png",
+        "feed_url" : "https://micro.blog/feeds/manton.json",
+        "icon" : "https://micro.blog/images/icons/favicon_256.png",
+        "version" : "https://jsonfeed.org/version/1",
+        "home_page_url" : "https://micro.blog/",
+        "title" : "Micro.blog - manton timeline"
+      }
+    }
+  ]
+  ```
+  
+  **Status Codes**
+  
+  - `200 OK` will be returned if found
+  - `403 Forbidden` will be returned if the user does not own this subscription
+  
+}

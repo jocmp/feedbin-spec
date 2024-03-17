@@ -1,0 +1,21 @@
+meta {
+  name: Update Saved Search
+  type: http
+  seq: 6
+}
+
+patch {
+  url: {{ _.base_url }}/saved_searches/{{ _.id }}.json
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "name": "string"
+  }
+}

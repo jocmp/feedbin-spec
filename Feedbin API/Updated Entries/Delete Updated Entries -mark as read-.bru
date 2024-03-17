@@ -1,0 +1,23 @@
+meta {
+  name: Delete Updated Entries -mark as read-
+  type: http
+  seq: 4
+}
+
+delete {
+  url: {{ _.base_url }}/updated_entries.json
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "updated_entries": [
+      0
+    ]
+  }
+}

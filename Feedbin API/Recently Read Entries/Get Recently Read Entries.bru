@@ -1,0 +1,11 @@
+meta {
+  name: Get Recently Read Entries
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{ _.base_url }}/recently_read_entries.json
+  body: none
+  auth: none
+}

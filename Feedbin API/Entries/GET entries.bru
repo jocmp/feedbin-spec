@@ -1,0 +1,30 @@
+meta {
+  name: GET entries
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{base_url}}/v2/entries.json?mode=extended&page=6
+  body: none
+  auth: basic
+}
+
+query {
+  mode: extended
+  page: 6
+  ~page: 0
+  ~since: 2023-10-22T16:57:15.425Z
+  ~ids: 
+  ~read: true
+  ~starred: true
+  ~per_page: 0
+  ~include_original: true
+  ~include_enclosure: true
+  ~include_content_diff: true
+}
+
+auth:basic {
+  username: {{username}}
+  password: {{password}}
+}

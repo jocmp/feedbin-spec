@@ -1,0 +1,11 @@
+meta {
+  name: Delete Tagging
+  type: http
+  seq: 7
+}
+
+delete {
+  url: {{ _.base_url }}/taggings/{{ _.id }}.json
+  body: none
+  auth: none
+}

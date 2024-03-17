@@ -1,0 +1,22 @@
+meta {
+  name: POST -tags-json
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{ _.base_url }}/tags.json
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "old_name": "string",
+    "new_name": "string"
+  }
+}

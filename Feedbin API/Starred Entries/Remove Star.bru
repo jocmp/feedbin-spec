@@ -1,0 +1,26 @@
+meta {
+  name: Remove Star
+  type: http
+  seq: 5
+}
+
+delete {
+  url: {{base_url}}/v2/starred_entries.json
+  body: json
+  auth: basic
+}
+
+headers {
+  Content-Type: application/json
+}
+
+auth:basic {
+  username: {{username}}
+  password: {{password}}
+}
+
+body:json {
+  {
+    "starred_entries": [4323235195]
+  }
+}

@@ -1,0 +1,16 @@
+meta {
+  name: Get Saved Search
+  type: http
+  seq: 10
+}
+
+get {
+  url: {{ _.base_url }}/saved_searches/{{ _.id }}.json
+  body: none
+  auth: none
+}
+
+query {
+  ~include_entries: true
+  ~page: 0
+}

@@ -1,0 +1,23 @@
+meta {
+  name: Create Recently Read Entries
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{ _.base_url }}/recently_read_entries.json
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "recently_read_entries": [
+      0
+    ]
+  }
+}

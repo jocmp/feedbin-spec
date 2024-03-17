@@ -1,0 +1,22 @@
+meta {
+  name: Create Tagging
+  type: http
+  seq: 8
+}
+
+post {
+  url: {{ _.base_url }}/taggings.json
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "feed_id": 0,
+    "name": "string"
+  }
+}

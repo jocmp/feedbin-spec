@@ -1,0 +1,100 @@
+meta {
+  name: Create Subscription
+  type: http
+  seq: 10
+}
+
+post {
+  url: {{base_url}}/v2/subscriptions.json
+  body: json
+  auth: basic
+}
+
+headers {
+  Content-Type: application/json
+}
+
+auth:basic {
+  username: {{username}}
+  password: {{password}}
+}
+
+body:json {
+  {
+    "feed_url": "string"
+  }
+}
+
+docs {
+  - `POST /v2/subscriptions.json` will create a new subscription to the specified `feed_url`
+  
+  **Request**
+  
+  ```json
+  {
+    "feed_url": "http://daringfireball.net/index.xml"
+  }
+  ```
+  
+  | Parameter          | Required | Example                                                                                                                                    |
+  | ------------------ | -------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
+  | `feed_url: string` | true     | can be the fully qualified url to the feed like `http://daringfireball.net/index.xml`, or the url to the website like `daringfireball.net` |
+  
+  
+  **Status Codes**
+  
+  - `201 Created` will be returned if subscription is successful, the `Location` header will have the URL to the newly created subscription
+  - `302 Found` will be returned if subscription exists, the `Location` header will have the URL to the newly created subscription
+  - `404 Not Found` will be returned if no feed is found at the `feed_url`
+  - `300 Multiple Choices` will be returned if multiple feeds are found at the `feed_url`
+  
+  If `201` or `302` are returned, the response will be the same as **Get Subscription**:
+  
+  **Request**
+  
+  ```json
+  {
+    "feed_url": "http://daringfireball.net/"
+  }
+  ```
+  
+  **Response**
+  
+  ```json
+  {
+      "id": 4105850,
+      "created_at": "2017-10-28T14:30:39.324314Z",
+      "feed_id": 838741,
+      "title": "Daring Fireball",
+      "feed_url": "https://daringfireball.net/feeds/main",
+      "site_url": "https://daringfireball.net/"
+  }
+  ```
+  
+  If a `300 Multiple Choices` is returned, it means the requested site exposes more than one feed. In this case the response will let you know what the options are. For example:
+  
+  **Request**
+  
+  `POST /v2/subscriptions.json`
+  
+  ```json
+  {
+    "feed_url": "https://blog.github.com"
+  }
+  ```
+  
+  **Response**
+  
+  ```json
+  [
+    {
+      "feed_url": "https://github.com/blog.atom",
+      "title": "The GitHub Blog"
+    },
+    {
+      "feed_url": "https://github.com/blog/broadcasts.atom",
+      "title": "The GitHub Blog (Broadcasts)"
+    }
+  ]
+  ```
+}

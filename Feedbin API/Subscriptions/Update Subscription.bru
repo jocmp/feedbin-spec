@@ -1,0 +1,62 @@
+meta {
+  name: Update Subscription
+  type: http
+  seq: 6
+}
+
+patch {
+  url: {{ _.base_url }}/subscriptions/{{ _.id }}.json
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "title": "string"
+  }
+}
+
+docs {
+  Updating a subscription can be used to set a custom title for a feed.
+  
+  `PATCH /v2/subscriptions/525.json` will update the subscription with an id of `525`
+  
+  
+  **Request**
+  
+  ```json
+  {
+    "title": "Custom Title"
+  }
+  ```
+  
+  **Response**
+  
+  ```json
+  {
+    "id": 525,
+    "created_at": "2013-03-12T11:30:25.209432Z",
+    "feed_id": 47,
+    "title": "Custom Title",
+    "feed_url": "http://daringfireball.net/index.xml",
+    "site_url": "http://daringfireball.net/"
+  }
+  ```
+  
+  **Status Codes**
+  
+  - `200 OK` will be returned if the request was successful
+  - `403 Forbidden` will be returned if the user does not own this subscription
+  
+  **PATCH Alternative**
+  
+  Some proxies block or filter PATCH requests. A POST alternative is available for these cases:
+  
+  `POST /v2/subscriptions/525/update.json` will update the subscription with an id of `525`
+  
+  Thanks to [Oliver Fürniß](http://curioustimes.de/) for pointing this out.
+}

@@ -1,0 +1,11 @@
+meta {
+  name: Get Tagging
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{base_ur }}/taggings/{{ _.id }}.json
+  body: none
+  auth: none
+}

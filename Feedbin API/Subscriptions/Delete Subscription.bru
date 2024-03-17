@@ -1,0 +1,21 @@
+meta {
+  name: Delete Subscription
+  type: http
+  seq: 7
+}
+
+delete {
+  url: {{ _.base_url }}/subscriptions/{{ _.id }}.json
+  body: none
+  auth: none
+}
+
+docs {
+  `DELETE /v2/subscriptions/3.json` will delete the subscription with an id of `3`
+  
+  **Status Codes**
+  
+  - `204 No Content` will be returned if the request was successful
+  - `403 Forbidden` will be returned if the user does not own this subscription
+  
+}

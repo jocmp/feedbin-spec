@@ -1,0 +1,11 @@
+meta {
+  name: Get Saved Searches
+  type: http
+  seq: 8
+}
+
+get {
+  url: {{ _.base_url }}/saved_searches.json
+  body: none
+  auth: none
+}

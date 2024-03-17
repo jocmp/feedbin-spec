@@ -1,0 +1,16 @@
+meta {
+  name: Get Unread Entries
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{base_url}}/v2/unread_entries.json
+  body: none
+  auth: basic
+}
+
+auth:basic {
+  username: {{username}}
+  password: {{password}}
+}

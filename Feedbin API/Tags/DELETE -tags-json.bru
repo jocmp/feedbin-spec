@@ -1,0 +1,21 @@
+meta {
+  name: DELETE -tags-json
+  type: http
+  seq: 4
+}
+
+delete {
+  url: {{ _.base_url }}/tags.json
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "name": "string"
+  }
+}

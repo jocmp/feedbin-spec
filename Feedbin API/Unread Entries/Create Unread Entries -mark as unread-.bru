@@ -1,0 +1,23 @@
+meta {
+  name: Create Unread Entries -mark as unread-
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{ _.base_url }}/unread_entries.json
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "unread_entries": [
+      0
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+meta {
+  name: GET -imports-1-json
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{ _.base_url }}/imports/{{ _.id }}.json
+  body: none
+  auth: none
+}
