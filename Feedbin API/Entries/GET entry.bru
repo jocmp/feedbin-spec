@@ -1,0 +1,11 @@
+meta {
+  name: GET entry
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{base_url}}/entries/{{entry_id}}.json
+  body: none
+  auth: none
+}
