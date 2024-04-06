@@ -14,3 +14,25 @@ auth:basic {
   username: {{username}}
   password: {{password}}
 }
+
+docs {
+  Unread entries deals only with entry_ids. After downloading the unread entry ids, you'll want to follow up with a call to
+  
+  `GET /v2/entries.json?ids=4088,4089,4090,4091`
+  
+  To actually retrieve the unread entries. Please note, that you can only request up to 100 entries at a time.
+  
+  Get Unread Entries
+  ------------------
+  
+   - `GET /v2/unread_entries.json` will return an array of entry_ids
+  
+  
+  ```json
+  [4087,4088,4089,4090,4091,4092,4093,4094,4095,4096,4097]
+  ```
+  
+  **Status Codes**
+  
+  - `200 OK` will be returned
+}

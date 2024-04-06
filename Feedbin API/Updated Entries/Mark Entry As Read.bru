@@ -1,11 +1,11 @@
 meta {
-  name: Create Unread Entries -mark as unread-
+  name: Mark Entry As Read
   type: http
   seq: 4
 }
 
-post {
-  url: {{ _.base_url }}/unread_entries.json
+delete {
+  url: {{ _.base_url }}/updated_entries.json
   body: json
   auth: none
 }
@@ -16,7 +16,7 @@ headers {
 
 body:json {
   {
-    "unread_entries": [
+    "updated_entries": [
       0
     ]
   }

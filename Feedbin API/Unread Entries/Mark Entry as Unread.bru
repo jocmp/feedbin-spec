@@ -1,0 +1,52 @@
+meta {
+  name: Mark Entry as Unread
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{ _.base_url }}/unread_entries.json
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "unread_entries": [
+      0
+    ]
+  }
+}
+
+docs {
+  Create Unread Entries (mark as unread)
+  --------------------------------------
+  
+  - `POST /v2/unread_entries.json` will mark the specified entry_ids as unread.
+  
+  **Request**
+  
+  ```json
+  {
+    "unread_entries": [4089, 4090, 4091]
+  }
+  ```
+  
+  **Response**
+  
+  ```json
+  [4089,4090,4091]
+  ```
+  
+  **Status Codes**
+  
+  - `200 OK` will be returned if the request is successful
+  
+  **Note** There is a limit of 1,000 entry_ids per request
+  
+  The response will contain all of the entry_ids that were successfully marked as unread. If any ids that were sent are not returned in the response it usually means the user no longer has access to the feed the entry belongs to.
+}
