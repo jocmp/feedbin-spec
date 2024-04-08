@@ -5,7 +5,12 @@ meta {
 }
 
 get {
-  url: {{base_ur }}/taggings/{{ _.id }}.json
+  url: {{base_url}}/v2/taggings/{{tagging_id}}.json
   body: none
-  auth: none
+  auth: basic
+}
+
+auth:basic {
+  username: {{username}}
+  password: {{password}}
 }

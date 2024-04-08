@@ -5,18 +5,23 @@ meta {
 }
 
 post {
-  url: {{ _.base_url }}/taggings.json
+  url: {{base_url}}/v2/taggings.json
   body: json
-  auth: none
+  auth: basic
 }
 
 headers {
   Content-Type: application/json
 }
 
+auth:basic {
+  username: {{username}}
+  password: {{password}}
+}
+
 body:json {
   {
-    "feed_id": 0,
-    "name": "string"
+    "feed_id": "{{feed_id}}",
+    "name": "Test"
   }
 }

@@ -5,7 +5,12 @@ meta {
 }
 
 delete {
-  url: {{ _.base_url }}/taggings/{{ _.id }}.json
+  url: {{base_url}}/taggings/{{tagging_id}}.json
   body: none
-  auth: none
+  auth: basic
+}
+
+auth:basic {
+  username: {{username}}
+  password: {{password}}
 }
