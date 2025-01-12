@@ -5,7 +5,16 @@ meta {
 }
 
 get {
-  url: {{ _.base_url }}/saved_searches.json
+  url: {{base_url}}/v2/saved_searches.json
   body: none
-  auth: none
+  auth: basic
+}
+
+headers {
+  Content-Type: application/json
+}
+
+auth:basic {
+  username: {{username}}
+  password: {{password}}
 }

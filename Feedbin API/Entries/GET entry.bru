@@ -5,7 +5,12 @@ meta {
 }
 
 get {
-  url: {{base_url}}/entries/{{entry_id}}.json
+  url: {{base_url}}/v2/entries/{{entry_id}}.json
   body: none
-  auth: none
+  auth: basic
+}
+
+auth:basic {
+  username: {{username}}
+  password: {{password}}
 }

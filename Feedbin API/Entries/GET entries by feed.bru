@@ -1,11 +1,11 @@
 meta {
-  name: GET entries
+  name: GET entries by feed
   type: http
-  seq: 2
+  seq: 3
 }
 
 get {
-  url: {{base_url}}/v2/entries.json?mode=extended&page=1
+  url: {{base_url}}/v2/feeds/2497370/entries.json?mode=extended&page=1
   body: none
   auth: basic
 }
